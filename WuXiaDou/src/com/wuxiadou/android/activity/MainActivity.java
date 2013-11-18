@@ -1,16 +1,42 @@
 package com.wuxiadou.android.activity;
 
 import com.wuxiadou.android.R;
+import com.wuxiadou.android.activity.base.BaseActivity;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+	public int getLayoutResId() {
+		return R.layout.activity_main;
+	}
+
+	@Override
+	public void initView(View view) {
+		
+	}
+
+	@Override
+	public void initListener() {
+		
+	}
+
+	@Override
+	public void initData(View view, Bundle savedInstanceState) {
+		
+	}
+
+	@Override
+	protected Handler createActivityHandler() {
+		return null;
+	}
+
+	@Override
+	public void onClick(View v) {
+		
 	}
 
 }
