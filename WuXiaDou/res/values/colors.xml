@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- colors for common use -->
+    <color name="common_transparent">#00000000</color>
+    <color name="common_gray">#DDDDDDDD</color>
+    <color name="common_dark_translute">#AA494b4b</color>
+    <color name="common_black">#FF000000</color>
+    <color name="common_yellow">#FFfc6f24</color>
+    <color name="common_yellow_offset">#FFfc6f25</color>
+    <color name="common_white">#FFFFFFFF</color>
+ 	
+</resources>
