@@ -1,0 +1,15 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="BattleStyles"></style>
+    
+    <!-- Moveselector 基本招式选择 -->
+    <style name="BattleStyles.Moveselector"></style>
+	<style name="BattleStyles.Moveselector.PopUp">
+		<item name="@android:windowEnterAnimation">@anim/grow_from_bottomleft_to_topright</item>
+		<item name="@android:windowExitAnimation">@anim/shrink_from_topright_to_bottomleft</item>
+	</style>
+	<style name="BattleStyles.Moveselector.PopDown">
+		<item name="@android:windowEnterAnimation">@anim/grow_from_topleft_to_bottomright</item>
+		<item name="@android:windowExitAnimation">@anim/shrink_from_bottomright_to_topleft</item>
+	</style>
+</resources>

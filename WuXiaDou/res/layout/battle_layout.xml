@@ -54,15 +54,14 @@
                 android:cacheColorHint="#00000000" />
         </LinearLayout>
     </LinearLayout>
-    <include layout="@layout/base_moves_list"
-        android:id="@+id/base_moves_list_ll"
-        android:visibility="gone"/>"
+    
 	<Button 
+	    android:id="@+id/battle_moveset_submit_btn"
 	    android:layout_width="fill_parent"
 	    android:layout_height="50dip"
 	    android:layout_margin="10dip"
 	    android:layout_alignParentBottom="true"
-	    android:text="@string/attack"
+	    android:text="@string/battle_attack_submit"
 	    style="@style/common_btn"
 	    />
 </RelativeLayout>

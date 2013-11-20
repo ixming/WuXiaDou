@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.ixming.io.file.FileOperator;
+import org.ixming.utils.StringUtil;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -316,6 +317,8 @@ public class Utils {
 		}.start();
 	}
 
-	
+	public static int hashOfString(String str) {
+		return StringUtil.isEmpty(str) ? 0 : str.hashCode();
+	}
 
 }

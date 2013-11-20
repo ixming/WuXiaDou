@@ -21,4 +21,29 @@
         <item name="android:textColor">@color/common_black</item>
     </style>
 
+    <style name="ScrollBar">
+<!--         <item name="android:scrollbarThumbVertical">@drawable/scrollbar_shape</item> -->
+        <item name="android:scrollbarTrackVertical">@null</item>
+<!--         <item name="android:scrollbarSize">@dimen/common_scrollbar_size</item> -->
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbarFadeDuration">@android:integer/config_shortAnimTime</item>
+    </style>
+    
+    <style name="BaseList">
+        <item name="android:background">@drawable/common_transparent</item>
+        <item name="android:cacheColorHint">@color/common_transparent</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:listSelector">@drawable/common_transparent</item>
+    </style>
+    <style name="BaseList.NoScrollBar">
+        <item name="android:scrollbars">none</item>
+    </style>
+    <style name="BaseList.ScrollBar" parent="ScrollBar">
+        <item name="android:background">@drawable/common_transparent</item>
+        <item name="android:cacheColorHint">@color/common_transparent</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:listSelector">@drawable/common_transparent</item>
+    </style>
+    
 </resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource>
+	<moves>
+		<move id="1" name="杀" attrid="1" attrname="火" describe="杀，基本招式之一，五行属火"/>
+		<move id="2" name="防" attrid="2" attrname="金" describe="防，基本招式之一，五行属金"/>
+		<move id="3" name="极" attrid="3" attrname="木" describe="极，基本招式之一，五行属木"/>
+		<move id="4" name="制" attrid="4" attrname="土" describe="制，基本招式之一，五行属土"/>
+		<move id="5" name="闪" attrid="5" attrname="水" describe="闪，基本招式之一，五行属水"/>
+	</moves>
+	
+	<!--<attrs>
+		<attr id="1" name="火"/>
+		<attr id="2" name="金"/>
+		<attr id="3" name="木"/>
+		<attr id="4" name="土"/>
+		<attr id="5" name="水"/>
+	</attrs>-->
+</resource>
