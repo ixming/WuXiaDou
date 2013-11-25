@@ -47,7 +47,10 @@ public class MoveListAdapter extends AbsResLayoutAdapter<BasicMove, MoveListAdap
 		return holder;
 	}
 
-	public boolean isAllSet() {
+	/**
+	 * 技能是否已经设置完成。
+	 */
+	public boolean isAllMoveSet() {
 		for (int i = 0; i < getCount(); i++) {
 			if (getItem(i) == EMPTY_ITEM) {
 				return false;

@@ -58,6 +58,22 @@ public class MoveLoader {
 		return copy;
 	}
 	
+	public String[] getOriginalBasicMoveNames() {
+		String[] copy = new String[mMoveList.size()];
+		for (int i = 0; i < mMoveList.size(); i++) {
+			copy[i] = mMoveList.get(i).getName();
+		}
+		return copy;
+	}
+	
+	public String[] getOriginalBasicMoveNamesWithAttr() {
+		String[] copy = new String[mMoveList.size()];
+		for (int i = 0; i < mMoveList.size(); i++) {
+			copy[i] = toAppearanceString(mMoveList.get(i));
+		}
+		return copy;
+	}
+	
 	/**
 	 * 随机获取单个基本招式
 	 */

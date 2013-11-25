@@ -2,10 +2,7 @@ package com.wuxiadou.android.activity;
 
 import com.wuxiadou.android.R;
 import com.wuxiadou.android.activity.base.BaseActivity;
-import com.wuxiadou.android.control.adapter.MoveListAdapter;
 import com.wuxiadou.android.control.manager.BattleManager;
-import com.wuxiadou.android.model.battle.BasicMove;
-import com.wuxiadou.android.view.MoveSelectorPopWin;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,13 +13,12 @@ import android.widget.Button;
 import android.widget.ListView;
 
 public class BattleActivity extends BaseActivity {
-	ListView own_moves_LV;
-	ListView enemy_moves_LV;
-	Button moveset_BT;
-	MoveListAdapter ownMovesAdapter;
-	MoveListAdapter enemyMovesAdapter;
-	BattleManager manager;
-	int currentPosition;
+	
+	private ListView own_moves_LV;
+	private ListView enemy_moves_LV;
+	
+	private Button moveset_BT;
+	private BattleManager manager;
 
 	@Override
 	public int getLayoutResId() {
@@ -42,17 +38,7 @@ public class BattleActivity extends BaseActivity {
 		own_moves_LV.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				currentPosition = position;
-				
-				MoveSelectorPopWin popWin = new MoveSelectorPopWin(context);
-				popWin.setOnItemClickListener(new MoveSelectorPopWin.OnMoveItemClickListener() {
-					@Override
-					public void onMoveItemClick(int position, BasicMove move) {
-						ownMovesAdapter.update(currentPosition, move);
-						ownMovesAdapter.notifyDataSetChanged();
-					}
-				});
-				popWin.showMoveSelector(view);
+				manager.gotoSetBasicMoveInSpecPos(position, view);
 			}
 		});
 	}
@@ -60,10 +46,8 @@ public class BattleActivity extends BaseActivity {
 	@Override
 	public void initData(View view, Bundle savedInstanceState) {
 		manager = new BattleManager(context, handler);
-		ownMovesAdapter = new MoveListAdapter(context);
-		enemyMovesAdapter = new MoveListAdapter(context);
-		own_moves_LV.setAdapter(ownMovesAdapter);
-		enemy_moves_LV.setAdapter(enemyMovesAdapter);
+		own_moves_LV.setAdapter(manager.getMyMovesAdapter());
+		enemy_moves_LV.setAdapter(manager.getEnemyMovesAdapter());
 	}
 
 	@Override
@@ -75,12 +59,7 @@ public class BattleActivity extends BaseActivity {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.battle_moveset_submit_btn:
-			if (ownMovesAdapter.isAllSet()) {
-				enemyMovesAdapter.randomFill();
-				enemyMovesAdapter.notifyDataSetChanged();
-			} else {
-				manager.toastShow("请完成招式");
-			}
+			manager.submitMovesSet();
 			break;
 
 		default:

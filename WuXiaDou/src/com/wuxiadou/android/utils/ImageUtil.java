@@ -103,6 +103,34 @@ public class ImageUtil {
 		}
 		return bitmap;
 	}
+	
+
+	/**
+	 * 本地res下图片
+	 * @param path
+	 * @return
+	 */
+	public Bitmap getBitmapFromRes(Context context, int resId) {
+		Bitmap bitmap = null;
+		String key = "R.drawable." + resId;
+		try {
+			if (imageCache.get(key) != null) {
+				bitmap = imageCache.get(key);
+			}
+			if (bitmap == null || bitmap.isRecycled()) {
+				BitmapFactory.Options options = new BitmapFactory.Options();
+				options.inPreferredConfig = Config.RGB_565;
+				options.inPurgeable = true;
+				options.inInputShareable = true;
+				bitmap = BitmapFactory.decodeResource(context.getResources(), resId, options);
+				addCacheUrl(key, bitmap);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return bitmap;
+	}
+	
 	/**
 	 * 
 	 * @param context
@@ -213,23 +241,6 @@ public class ImageUtil {
 		return cacheFile;
 	}
 	
-	public static Bitmap getBitmapFromRes(Context context, int resId) {
-		Bitmap bitmap = null;
-		try {
-			BitmapFactory.Options options = new BitmapFactory.Options();
-			options.inPreferredConfig = Config.RGB_565;
-			options.inPurgeable = true;
-			options.inInputShareable = true;
-			bitmap = BitmapFactory.decodeResource(context.getResources(),
-					resId, options);
-		} catch (Exception e) {
-			bitmap = null;
-			LogUtils
-					.e(TAG, "getBitmapFromRes Exception: " + e.getMessage());
-		}
-		return bitmap;
-	}
-
 	public static Bitmap getBitmapFromFileInputStream(FileInputStream is) {
 		if (is == null)
 			return null;

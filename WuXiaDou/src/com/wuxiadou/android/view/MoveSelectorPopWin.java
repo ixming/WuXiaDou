@@ -8,7 +8,6 @@ import com.wuxiadou.android.utils.LogUtils;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -35,7 +34,6 @@ public class MoveSelectorPopWin extends PopupWindow {
 	private final int GROW_FORM_BOTTOM_TO_TOP = 0x2;
 	
 	private Context mContext;
-	private Drawable mBackground;
 	private WindowManager mWindowManager;
 	private OnTouchListener mOnTouchListener;
 	private OnShowListener mOnShowListener;
@@ -59,7 +57,7 @@ public class MoveSelectorPopWin extends PopupWindow {
 					return true;
 				}
 				if (null != mOnTouchListener) {
-					mOnTouchListener.onTouch(v, event);
+					return mOnTouchListener.onTouch(v, event);
 				}
 				return false;
 			}
@@ -67,6 +65,10 @@ public class MoveSelectorPopWin extends PopupWindow {
 
 		mWindowManager = (WindowManager) context
 				.getSystemService(Context.WINDOW_SERVICE);
+
+		super.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+		super.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
+		super.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
 		
 		setContentView(R.layout.battle_moves_list);
 		mMoveListView = (ListView) getContentView().findViewById(R.id.battle_move_selector_lv);
@@ -82,6 +84,11 @@ public class MoveSelectorPopWin extends PopupWindow {
 		return mWindowManager;
 	}
 	
+	@Override
+	public void setTouchInterceptor(OnTouchListener l) {
+		mOnTouchListener = l;
+	}
+	
 	/**
 	 * On pre show
 	 */
@@ -90,31 +97,10 @@ public class MoveSelectorPopWin extends PopupWindow {
 			mOnShowListener.onShow();
 		}
 
-		if (mBackground == null) {
-			mBackground = new ColorDrawable(Color.TRANSPARENT);
-			super.setBackgroundDrawable(mBackground);
-		} else {
-			super.setBackgroundDrawable(mBackground);
-		}
-		super.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
-		super.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
 		super.setTouchable(true);
 		super.setFocusable(true);
 		super.setOutsideTouchable(true);
 		//super.setContentView(mRootView);
-	}
-
-	/**
-	 * Set background drawable.
-	 * 
-	 * @param background Background drawable
-	 */
-	public void setBackgroundDrawable(Drawable background) {
-		mBackground = background;
-	}
-	
-	public Drawable getBackgroundDrawable() {
-		return mBackground;
 	}
 
 	/**

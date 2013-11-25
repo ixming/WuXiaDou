@@ -15,20 +15,14 @@ import android.text.TextUtils;
  * @version 1.0
  */
 public abstract class BaseManager {
-	private Context appContext;
-	private Handler handler;
+	Context context;
+	Context appContext;
+	Handler handler;
 
 	public BaseManager(Context context, Handler handler) {
-		if (context instanceof Activity) {
-			this.appContext = context.getApplicationContext();
-		} else {
-			this.appContext = context;
-		}
+		this.context = context;
+		this.appContext = context.getApplicationContext();
 		this.handler = handler;
-	}
-	
-	protected final Context getApplicationContext() {
-		return this.appContext;
 	}
 	
 	protected final Handler getHandler() {
