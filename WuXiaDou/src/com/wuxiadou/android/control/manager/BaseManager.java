@@ -20,6 +20,9 @@ public abstract class BaseManager {
 	Handler handler;
 
 	public BaseManager(Context context, Handler handler) {
+		if (!(context instanceof Activity)) {
+			throw new IllegalArgumentException("<init> context is not an Activity instance!");
+		}
 		this.context = context;
 		this.appContext = context.getApplicationContext();
 		this.handler = handler;

@@ -20,10 +20,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:padding="5dip"
             android:background="@color/common_gray" 
-            android:visibility="gone"
-            android:padding="5dip"/>
+            android:visibility="gone"/>
         
+        <com.wuxiadou.android.common.view.BatterSelectorView_WithAnim
+            android:id="@+id/view3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:padding="5dip"
+            android:background="@color/common_gray" 
+            android:visibility="gone"/>
         
     </RelativeLayout>
 

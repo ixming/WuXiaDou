@@ -167,7 +167,7 @@ public class BatterSelectorView extends View {
 				
 				movePoint.moveIndex = i;
 				movePoint.bound = rect;
-				movePoint.state = MovePoint.STATE_NORMAL;
+				movePoint.setNormal();
 				mMovesRects[i][j] = movePoint;
 			}
 		}
@@ -177,22 +177,20 @@ public class BatterSelectorView extends View {
 		// 画图以及文字
 		for (int i = 0; i < mMovesRects.length; i++) {
 			for (int j = 0; j < mMovesRects[i].length; j++) {
+				Bitmap bm;
 				if (mMovesRects[i][j].isNormal()) {
-					canvas.drawBitmap(mStateNormalBm, 
-							mMovesRects[i][j].bound.left,
-							mMovesRects[i][j].bound.top,
-							mNonTextPaint);
+					bm = mStateNormalBm;
 				} else if (mMovesRects[i][j].isPressed()) {
-					canvas.drawBitmap(mStatePressedBm, 
-							mMovesRects[i][j].bound.left,
-							mMovesRects[i][j].bound.top,
-							mNonTextPaint);
+					bm = mStatePressedBm;
 				} else if (mMovesRects[i][j].isSelected()) {
-					canvas.drawBitmap(mStateSelectedBm, 
-							mMovesRects[i][j].bound.left,
-							mMovesRects[i][j].bound.top,
-							mNonTextPaint);
+					bm = mStateSelectedBm;
+				} else {
+					bm = mStateNormalBm;
 				}
+				canvas.drawBitmap(bm, 
+						mMovesRects[i][j].bound.left,
+						mMovesRects[i][j].bound.top,
+						mNonTextPaint);
 				canvas.drawText(mMoveNames[i],
 						mMovesRects[i][j].bound.centerX(),
 						mMovesRects[i][j].bound.bottom - (mMoveItemSize - (int)mTextPaint.measureText(mMoveNames[i])) / 2,
@@ -418,7 +416,7 @@ public class BatterSelectorView extends View {
 		private static final int STATE_SELECTED = 2;
 		public int moveIndex;
 		public Rect bound;
-		public int state = STATE_NORMAL;
+		private int state = STATE_NORMAL;
 		
 		public boolean isFirstMove() {
 			return 0 == moveIndex;

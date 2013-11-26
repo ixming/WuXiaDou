@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity {
 		
 		view1 = findViewById(R.id.view1);
 		view2 = findViewById(R.id.view2);
-//		view3 = findViewById(R.id.view3);
+		view3 = findViewById(R.id.view3);
 	}
 
 	@Override
@@ -59,13 +59,17 @@ public class MainActivity extends BaseActivity {
 			AndroidUtil.setViewVisibility(view1, View.VISIBLE);
 			
 			AndroidUtil.setViewVisibility(view2, View.GONE);
+			AndroidUtil.setViewVisibility(view3, View.GONE);
 			break;
 		case R.id.btn2:
 			AndroidUtil.setViewVisibility(view2, View.VISIBLE);
 			
 			AndroidUtil.setViewVisibility(view1, View.GONE);
+			AndroidUtil.setViewVisibility(view3, View.GONE);
 			break;
 		case R.id.btn3:
+			AndroidUtil.setViewVisibility(view3, View.VISIBLE);
+			
 			AndroidUtil.setViewVisibility(view1, View.GONE);
 			AndroidUtil.setViewVisibility(view2, View.GONE);
 			break;
