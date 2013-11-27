@@ -6,20 +6,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
-public abstract class BaseFragment extends Fragment
-implements ILocalFragment, OnClickListener{
+import com.wuxiadou.android.utils.LogUtils;
 
-	public Context appContext;
-	public Context context;
-	FragmentActivity fragmentActivity;
-	private boolean mIsRootViewCreated = false;
+public abstract class BaseFragment extends Fragment
+implements ILocalFragment{
+
 	private View mRootView;
+	private boolean mIsRootViewCreated = false;
+	protected Context appContext;
+	protected Context context;
+	protected FragmentActivity fragmentActivity;
 	protected Handler handler;
 	/**
      * Called to do initial creation of a fragment.  This is called after
@@ -37,7 +37,6 @@ implements ILocalFragment, OnClickListener{
      */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 	}
 	
@@ -50,7 +49,7 @@ implements ILocalFragment, OnClickListener{
 	@Override
 	public final View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		Log.i("BaseFragment","execute onCreateView!!! ");
+		LogUtils.i("BaseFragment","execute onCreateView!!! ");
 		// 为了实现findViewById
 		mRootView = inflater.inflate(getLayoutResId(), container, false);
 		// 保证RootView加载完成
@@ -102,6 +101,42 @@ implements ILocalFragment, OnClickListener{
 		initData(mRootView, savedInstanceState);
 	}
 	
+	@Override
+	public void onDetach() {
+		LogUtils.i("BaseFragment","execute onDetach!!! ");	
+		super.onDetach();
+	}
+	
+	@Override
+	public void onDestroyView() {
+		LogUtils.i("BaseFragment","execute onDestroyView!!! ");	
+		super.onDestroyView();
+	}
+	
+	@Override
+	public void onDestroy() {
+		LogUtils.i("BaseFragment","execute onDestroy!!! ");	
+		super.onDestroy();
+	}
+	
+	@Override
+	public void onHiddenChanged(boolean hidden) {
+		LogUtils.i("BaseFragment","execute onHiddenChanged!!! hidden ? " + hidden);	
+		super.onHiddenChanged(hidden);
+	}
+	
+	@Override
+	public void onResume() {
+		LogUtils.d("BaseFragment","execute onResume!!! ");	
+		super.onResume();
+	}
+	
+	@Override
+	public void onPause() {
+		LogUtils.d("BaseFragment","execute onPause!!! ");	
+		super.onPause();
+	}
+	
 	void prepareInitView(View rootView) { }
 	void prepareInitData(View rootView, Bundle savedInstanceState) { }
 	
@@ -134,9 +169,11 @@ implements ILocalFragment, OnClickListener{
 		return getActivity().getApplicationContext();
 	}
 	
-	/**
-	 * 给指定的View添加监听器
-	 */
+	@Override
+	public final BaseFragment bindClickListener(int id) {
+		return bindClickListener(findViewById(id));
+	}
+	
 	@Override
 	public final BaseFragment bindClickListener(View view) {
 		if (null != view) {
@@ -144,11 +181,10 @@ implements ILocalFragment, OnClickListener{
 		}
 		return this;
 	}
-	
+
 	@Override
-	public final BaseFragment bindClickListener(int id) {
-		bindClickListener(findViewById(id));
-		return this;
+	public BaseFragment removeClickListener(int id) {
+		return bindClickListener(findViewById(id));
 	}
 	
 	@Override
@@ -158,11 +194,4 @@ implements ILocalFragment, OnClickListener{
 		}
 		return this;
 	}
-	
-	@Override
-	public BaseFragment removeClickListener(int id) {
-		bindClickListener(findViewById(id));
-		return this;
-	}
-	
 }

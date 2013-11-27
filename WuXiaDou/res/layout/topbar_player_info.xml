@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/topbar_playerinfo_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="70dip"
+    android:background="@drawable/common_simple_shape"
+    android:padding="5dip">
+    
+    <ImageView 
+        android:id="@+id/topbar_playerinfo_icon_iv"
+        android:layout_width="60dip"
+        android:layout_height="60dip"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dip"
+        android:src="@drawable/ic_launcher"/>
+    
+    <TextView 
+        android:id="@+id/topbar_playerinfo_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/topbar_playerinfo_icon_iv"
+        android:text="玩家：XXX"/>
+    
+    <TextView 
+        android:id="@+id/topbar_playerinfo_hp_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/topbar_playerinfo_icon_iv"
+        android:text="HP：1020"/>
+    
+</RelativeLayout>

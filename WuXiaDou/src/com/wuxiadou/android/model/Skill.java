@@ -1,6 +1,8 @@
 package com.wuxiadou.android.model;
 
-import org.ixming.utils.StringUtil;
+import org.ixming.utils.StringUtils;
+
+import com.wuxiadou.android.utils.Utils;
 
 /**
  * 技能。<br/>
@@ -82,8 +84,8 @@ public class Skill {
 	
 	@Override
 	public int hashCode() {
-		int hash = StringUtil.isEmpty(name) ? 0 : name.hashCode();
-		hash = hash * 31 + (StringUtil.isEmpty(moveCombination) ? 0 : moveCombination.hashCode());
+		int hash = Utils.hashOfString(name);
+		hash = hash * 31 + Utils.hashOfString(moveCombination);
 		return hash;
 	}
 }

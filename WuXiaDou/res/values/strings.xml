@@ -2,6 +2,12 @@
 <resources>
 
     <string name="app_name">武侠斗</string>
+    <!-- 主页菜单 -->
+    <string name="maintab_index">主页</string>
+    <string name="maintab_skills">武功</string>
+    <string name="maintab_maps">副本</string>
+    <string name="maintab_battles">争霸</string>
+    
     
     <!-- 对战模式界面 -->
     <string name="battle_player_name">%s</string>

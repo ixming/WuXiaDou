@@ -1,25 +1,23 @@
 package com.wuxiadou.android.activity;
 
-import com.wuxiadou.android.R;
-import com.wuxiadou.android.activity.base.BaseActivity;
-import com.wuxiadou.android.control.manager.BattleManager;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class BattleActivity extends BaseActivity {
-	
+import com.wuxiadou.android.R;
+import com.wuxiadou.android.activity.base.BaseFragment;
+import com.wuxiadou.android.control.manager.BattleManager;
+
+public class BattlesFragment extends BaseFragment {
 	private ListView own_moves_LV;
 	private ListView enemy_moves_LV;
 	
 	private Button moveset_BT;
 	private BattleManager manager;
-
 	@Override
 	public int getLayoutResId() {
 		return R.layout.battle_layout;
@@ -51,11 +49,6 @@ public class BattleActivity extends BaseActivity {
 	}
 
 	@Override
-	protected Handler createActivityHandler() {
-		return new MyHanlder();
-	}
-
-	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.battle_moveset_submit_btn:
@@ -67,6 +60,9 @@ public class BattleActivity extends BaseActivity {
 		}
 	}
 
-	class MyHanlder extends Handler {
+	@Override
+	protected Handler createActivityHandler() {
+		return null;
 	}
+
 }

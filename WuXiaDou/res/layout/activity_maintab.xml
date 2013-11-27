@@ -1,0 +1,54 @@
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_maintab_th"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/common_white">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <include layout="@layout/topbar_player_info"/>
+        
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+android:id/tabs"
+            android:layout_below="@id/topbar_playerinfo_layout">
+            
+            <fragment
+                android:id="@+id/activity_maintab_index"
+                class="com.wuxiadou.android.activity.IndexFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+            
+            <fragment
+                android:id="@+id/activity_maintab_skills"
+                class="com.wuxiadou.android.activity.SkillsFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+            
+            <fragment
+                android:id="@+id/activity_maintab_maps"
+                class="com.wuxiadou.android.activity.MapsFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+            
+            <fragment
+                android:id="@+id/activity_maintab_battles"
+                class="com.wuxiadou.android.activity.BattlesFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+            
+        </FrameLayout>
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/common_gray"/>
+    </RelativeLayout>
+
+</TabHost>

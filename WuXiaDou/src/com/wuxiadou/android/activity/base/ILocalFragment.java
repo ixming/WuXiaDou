@@ -11,7 +11,7 @@ import android.view.View;
  * @author YinYong
  * @version 1.0
  */
-interface ILocalFragment {
+interface ILocalFragment extends View.OnClickListener {
 
 	/**
 	 * define the layout res of the fragment
@@ -56,11 +56,6 @@ interface ILocalFragment {
 	boolean onBackPressed();
 	
 	/**
-	 * 给指定的View添加监听器
-	 */
-	ILocalFragment bindClickListener(View view);
-	
-	/**
 	 * 通过ID找到指定的View，并为之添加监听器；<br/>
 	 * 
 	 * 该方法着重强调此View只需添加点击事件，而不会对之进行状态或者
@@ -68,9 +63,14 @@ interface ILocalFragment {
 	 */
 	ILocalFragment bindClickListener(int id);
 	
-	ILocalFragment removeClickListener(View view);
+	/**
+	 * 给指定的View添加监听器
+	 */
+	ILocalFragment bindClickListener(View view);
 	
 	ILocalFragment removeClickListener(int id);
+	
+	ILocalFragment removeClickListener(View view);
 	
 	/**
 	 * just like findViewById in Activity or View subclasses

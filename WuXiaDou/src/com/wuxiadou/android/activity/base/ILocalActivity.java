@@ -2,6 +2,7 @@ package com.wuxiadou.android.activity.base;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 /**
@@ -10,7 +11,7 @@ import android.view.View;
  * @author YinYong
  * @version 1.0
  */
-interface ILocalActivity extends View.OnClickListener{
+interface ILocalActivity extends View.OnClickListener {
 
 	/**
 	 * define the layout res of the activity
@@ -49,11 +50,6 @@ interface ILocalActivity extends View.OnClickListener{
 	View getRootView();
 	
 	/**
-	 * 给指定的View添加监听器
-	 */
-	ILocalActivity bindClickListener(View view);
-	
-	/**
 	 * 通过ID找到指定的View，并为之添加监听器；<br/>
 	 * 
 	 * 该方法着重强调此View只需添加点击事件，而不会对之进行状态或者
@@ -61,9 +57,27 @@ interface ILocalActivity extends View.OnClickListener{
 	 */
 	ILocalActivity bindClickListener(int resId);
 	
+	/**
+	 * 给指定的View添加监听器
+	 */
+	ILocalActivity bindClickListener(View view);
+	
+	/**
+	 * 移除resId指定的View的单击事件监听器
+	 */
 	ILocalActivity removeClickListener(int resId);
 	
+	/**
+	 * 移除View的单击事件监听器
+	 */
 	ILocalActivity removeClickListener(View view);
+	
+	/**
+	 * 创建一个本Activity的Handler对象，此方法在onCreate()中调用，且
+	 * 在initView及initData之前。
+	 * @added 1.0
+	 */
+	Handler createActivityHandler();
 	
 	/**
 	 * 这是一个规范返回事件，并建议使用此方法，针对性地使用跳转Activity的动画

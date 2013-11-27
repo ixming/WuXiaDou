@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.ixming.utils.NumberUtil;
+import org.ixming.utils.NumberUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -146,13 +146,13 @@ public class MoveLoader {
 			mMoveMap = new SparseArray<BasicMove>(count);
 			for (int m = 0; m < count; m++) {
 				entryItem = (Element) nlMoves.item(m);
-				int id = NumberUtil.getInt(entryItem.getAttribute(ATTR_ID));
+				int id = NumberUtils.getInt(entryItem.getAttribute(ATTR_ID));
 				BasicMove basicMove = new BasicMove();
 				basicMove.setId(id);
 				basicMove.setName(entryItem.getAttribute(ATTR_NAME));
 				basicMove.setDescribe(entryItem.getAttribute(ATTR_DESCRIBE));
 				
-				basicMove.setAttrId(NumberUtil.getLong(entryItem.getAttribute(ATTR_ATTRID)));
+				basicMove.setAttrId(NumberUtils.getLong(entryItem.getAttribute(ATTR_ATTRID)));
 				basicMove.setAttrName(entryItem.getAttribute(ATTR_ATTRNAME));
 				// add to list
 				mMoveList.add(basicMove);

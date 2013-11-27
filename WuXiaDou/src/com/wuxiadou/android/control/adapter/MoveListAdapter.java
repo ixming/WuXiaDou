@@ -59,12 +59,6 @@ public class MoveListAdapter extends AbsResLayoutAdapter<BasicMove, MoveListAdap
 		return true;
 	}
 	
-	public void update(int position, BasicMove basicMove) {
-		if (position > -1 && position < getCount()) {
-			getContentList().set(position, basicMove);
-		}
-	}
-	
 	/**
 	 * 随机生成技能，填充该适配器。
 	 */

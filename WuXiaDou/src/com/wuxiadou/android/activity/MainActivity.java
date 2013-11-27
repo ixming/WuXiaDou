@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity {
 	}
 
 	@Override
-	protected Handler createActivityHandler() {
+	public Handler createActivityHandler() {
 		return null;
 	}
 
